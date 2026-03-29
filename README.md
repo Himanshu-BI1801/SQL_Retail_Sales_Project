@@ -47,15 +47,18 @@ total_sale FLOAT
 - **Customer Count**: Find out how many unique customers are in the dataset.
 - **Category Count**: Identify all unique product categories in the dataset.
 - **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
+- 
 '''sql
 --Select * from Retail_Sales_Project rsp 
 where customer_id is NULL 
 '''
 -----
+
 '''sql
 --Select * from Retail_Sales_Project rsp 
 WHERE cogs is NULL 
 '''
+
 '''sql
 --SELECT *
 FROM Retail_Sales_Project rsp
@@ -72,6 +75,7 @@ WHERE
     OR rsp.cogs IS NULL
     OR rsp.total_sale IS NULL;
 '''
+
 '''sql
 --SELECT *
 FROM Retail_Sales_Project rsp
@@ -88,14 +92,17 @@ WHERE
     OR rsp.cogs IS NULL OR rsp.cogs = ''
     OR rsp.total_sale IS NULL OR rsp.total_sale = ''
 
+'''sql
   --select * from Retail_Sales_Project rsp 
   where
   rsp.quantity ='';
 '''
+
 '''sql
 --DELETE from Retail_Sales_Project
   where rsp.quantity = '';
 '''
+
 --SELECT COUNT(*) from Retail_Sales_Project rsp 
 
 --SELECT Count(rsp.age )
@@ -129,17 +136,18 @@ The following SQL queries were developed to answer specific business questions:
 --Q.11. Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
 
  --------------------------------------------------------------------------------------
---Q.1.	Write a SQL query to retrieve all columns for sales made on '2022-11-05:
+--Q.1.	**Write a SQL query to retrieve all columns for sales made on '2022-11-05**:
      '''sql
      SELECT * From Retail_Sales_Project rsp 
       Where rsp.sale_date ='2022-11-05'
       '''
---Q.2. Write a SQL query to retrieve sales for the month of December 2022: 
+--Q.2. **Write a SQL query to retrieve sales for the month of December 2022**: 
   '''sql    
 Select * from Retail_Sales_Project rsp 
 where rsp.sale_date BETWEEN '2022-12-01' and '2022-12-31';
 '''
---Q.3. Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022
+--Q.3. **Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022**
+
 '''sql
  SELECT * 
  from Retail_Sales_Project rsp 
@@ -149,7 +157,9 @@ where rsp.sale_date BETWEEN '2022-12-01' and '2022-12-31';
  STRFTIME('%Y-%m',rsp.sale_date) = '2022-11'
  AND rsp.quantity >= 4
  '''
- --Q.4. Write a SQL query to calculate the total sales (total_sale) for each category.
+ 
+ --Q.4. **Write a SQL query to calculate the total sales (total_sale) for each category**.
+ 
  '''sql
 Select rsp.category,
 COUNT(quantity) as Total_quantity,
@@ -158,19 +168,22 @@ from Retail_Sales_Project rsp
 Group BY 1
 '''
 
- --Q.5. Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.:
+ --Q.5. **Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category**:
+ 
  '''sql
 SELECT rsp.category, 
 Round(AVG(rsp.age),1) AS Avg_age
 from Retail_Sales_Project rsp 
 WHERE rsp.category ='Beauty' 
 '''
---Q.6. Write a SQL query to find all transactions where the total_sale is greater than 1000.:
+--Q.6. **Write a SQL query to find all transactions where the total_sale is greater than 1000**:
+
 '''sql
 SELECT * from Retail_Sales_Project rsp 
 WHERE rsp.total_sale >1000
 '''
---Q.7. Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
+--Q.7. **Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category**.
+
 '''sql
 SELECT rsp.category, rsp.gender,
 Count(rsp.transactions_id) AS Total_transaction
@@ -178,7 +191,8 @@ from Retail_Sales_Project rsp
 Group BY rsp.category ,rsp.gender 
 Order BY 1
 '''
---Q.8. Write a SQL query to calculate the average sale for each month. Find out best selling month in each year:
+--Q.8. **Write a SQL query to calculate the average sale for each month. Find out best selling month in each year**:
+
 '''sql
 Select * FROM 
 (
@@ -205,7 +219,8 @@ Where Sales_Rank = 1;
 '''
 
 
---Q.9. **Write a SQL query to find the top 5 customers based on the highest total sales **:
+--Q.9. **Write a SQL query to find the top 5 customers based on the highest total sales**:
+
 '''sql
 SELECT customer_id,
 Sum(total_sale) AS Sale
@@ -214,7 +229,9 @@ Group BY 1
 Order BY 2 DESC
 LIMIT 5;
 '''
---Q.10. Write a SQL query to find the number of unique customers who purchased items from each category.:
+
+--Q.10. **Write a SQL query to find the number of unique customers who purchased items from each category**:
+
 '''sql
  Select 
  category,
@@ -222,7 +239,8 @@ LIMIT 5;
  from Retail_Sales_Project rsp
  Group BY category	
  '''
---Q.11. Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17):
+--Q.11.**Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)**:
+
  '''sql
  WITH Hourly_Sale
  as (
