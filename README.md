@@ -126,7 +126,8 @@ The following SQL queries were developed to answer specific business questions:
 
 --Q.10. Write a SQL query to find the number of unique customers who purchased items from each category.
 
---Q.11. Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17):
+--Q.11. Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
+
  --------------------------------------------------------------------------------------
 --Q.1.	Write a SQL query to retrieve all columns for sales made on '2022-11-05:
      SELECT * From Retail_Sales_Project rsp 
